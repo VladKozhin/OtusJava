@@ -64,4 +64,21 @@ public class AbstractMovableObject implements IMovable, IRotatable {
         Number num = (Number) abstractObject.getField("AngularVelocity");
         return num.doubleValue();
     }
+
+    public Vector clarificateDirection() {
+        Vector initialVelocity = movementComponent.getVelocity();
+        double direction = rotationComponent.getDirection(); // в градусах
+
+        double angleRad = Math.toRadians(direction); // преобразование в радианы
+
+        int newX = (int) Math.round(initialVelocity.getX() * Math.cos(angleRad) - initialVelocity.getY() * Math.sin(angleRad));
+        int newY = (int) Math.round(initialVelocity.getX() * Math.sin(angleRad) + initialVelocity.getY() * Math.cos(angleRad));
+
+        return new Vector(newX, newY);
+    }
+
+    public void setVelocity(Vector velocity) {
+        this.movementComponent.setVelocity(velocity);
+        this.abstractObject.setField("Velocity", velocity);
+    }
 }

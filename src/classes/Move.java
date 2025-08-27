@@ -1,8 +1,9 @@
 package classes;
 
+import interfaces.ICommand;
 import interfaces.IMovable;
 
-public class Move {
+public class Move implements ICommand {
     private IMovable target;
 
     public Move(IMovable target) {
@@ -13,6 +14,7 @@ public class Move {
         Vector location = target.getLocation();
         Vector velocity = target.getVelocity();
         Vector newLocation = location.add(velocity);
+        System.out.println("Start: " + location.toString() + ", end: " + newLocation.toString());
         target.setLocation(newLocation);
     }
 }

@@ -26,4 +26,9 @@ public class MoveComponent implements IMovable {
     public Vector getVelocity() {
         return velocity;
     }
+
+    @Override
+    public void setVelocity(Vector vel) {
+        this.velocity = vel;
+    }
 }

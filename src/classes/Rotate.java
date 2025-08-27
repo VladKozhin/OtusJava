@@ -1,12 +1,14 @@
 package classes;
 
+import interfaces.ICommand;
 import interfaces.IRotatable;
 
-public class Rotate {
+public class Rotate implements ICommand {
     private IRotatable target;
 
     public Rotate(IRotatable target) {
         this.target = target;
+
     }
 
     public void execute() {
@@ -17,7 +19,7 @@ public class Rotate {
         if (result < 0) {
             result += 360; // чтобы результат был в диапазоне [0, 360)
         }
-
+        System.out.println("Start direction: " + a + ", new Direction: " + result);
         target.setDirection(result);
     }
 }
