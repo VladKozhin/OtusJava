@@ -17,10 +17,10 @@ jobs:
       - name: Checkout репозитория
         uses: actions/checkout@v3
 
-      - name: Настройка JDK 22
+      - name: Настройка JDK 20
         uses: actions/setup-java@v3
         with:
-          java-version: '22'
+          java-version: '20'
           distribution: 'adopt'
 
       - name: Проверка Maven
