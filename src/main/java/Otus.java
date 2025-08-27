@@ -1,6 +1,4 @@
 import classes.*;
-import components.MoveComponent;
-import components.RotateComponent;
 import interfaces.*;
 
 import java.util.HashMap;

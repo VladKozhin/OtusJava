@@ -31,7 +31,8 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <includes>
-                        <include>**/tests/*Test.java</include>
+                        <include>**/src/test/java/*Test.java</include>
+                        <useJUnitPlatform>true</useJUnitPlatform>
                     </includes>
                 </configuration>
             </plugin>
