@@ -16,17 +16,18 @@ public class Otus {
         params.put("DirectionsNumber", 8);
         params.put("AngularVelocity", 90.0);
 
-        IAbstractObject abstractObject = new AbstractObject(params);
-        AbstractMovableObject spaceShip = new AbstractMovableObject(abstractObject);
-
         IoC.writeLog();
-        // Создаем новый скоуп "gameSession1"
         IoC.resolve("Scopes.New", "gameSession1");
-        // Устанавливаем текущий активный скоуп на "gameSession1"
         IoC.resolve("Scopes.Current", "gameSession1");
 
         IoC.resolve("IoC.Register", "MoveMe", (IFactory<ICommand>) (parameters) -> new Move((IMovable)parameters[0]));
         IoC.resolve("IoC.Register", "RotateMe", (IFactory<ICommand>) (parameters) -> new Rotate((IRotatable)parameters[0]));
+
+        IoC.resolve("IoC.Register", "GetAbstractObject", (IFactory<AbstractObject>) (parameters) -> new AbstractObject((Map<String, Object>) parameters[0]));
+        IoC.resolve("IoC.Register", "GetAbstractMovableObject", (IFactory<AbstractMovableObject>) (parameters) -> new AbstractMovableObject((AbstractObject) parameters[0]));
+
+        AbstractObject abstractObject = IoC.resolve("GetAbstractObject", params);
+        AbstractMovableObject spaceShip = IoC.resolve("GetAbstractMovableObject", abstractObject);
 
         ICommand move = IoC.resolve("MoveMe", spaceShip);
         ICommand rotate = IoC.resolve("RotateMe", spaceShip);
