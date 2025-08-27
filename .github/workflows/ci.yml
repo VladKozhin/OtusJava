@@ -26,5 +26,5 @@ jobs:
       - name: Проверка Maven
         run: mvn --version
 
-      - name: Запуск сборки и тестов
-        run: mvn clean test
+      - name: Запуск тестов
+        run: mvn test
