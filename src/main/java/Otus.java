@@ -10,13 +10,17 @@ public class Otus {
     public static void main(String[] args) {
 
         Map<String, Object> params = new HashMap<>();
-        params.put("Location", new Vector(5, 5));
-        params.put("Direction", 90.0); // угол в градусах
-        params.put("Velocity", new Vector(10, 0));
+        params.put("Location", new Vector(0, 0));
+        params.put("Direction", 0.0); // угол в градусах
+        params.put("Velocity", new Vector(10, 5));
         params.put("DirectionsNumber", 8);
         params.put("AngularVelocity", 90.0);
 
-        IoC.writeLog();
+        AbstractObject obj = new AbstractObject(params);
+
+
+
+        /*IoC.writeLog();
         IoC.resolve("Scopes.New", "gameSession1");
         IoC.resolve("Scopes.Current", "gameSession1");
 
@@ -36,6 +40,6 @@ public class Otus {
         gameQueue.enqueue(rotate);
         gameQueue.enqueue(() -> spaceShip.setVelocity(spaceShip.clarificateDirection()));
         gameQueue.enqueue(move);
-        gameQueue.execute();
+        gameQueue.execute();*/
     }
 }

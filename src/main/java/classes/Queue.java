@@ -11,7 +11,7 @@ public class Queue {
         commands.push(command);
     }
 
-    public void execute() {
+    public void execute() throws InterruptedException {
         while (!commands.isEmpty()) {
             ICommand cmd = commands.pop();
             if (cmd instanceof Queue) {
